@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Product Detail{% endblock %}
+{% block content %}
+  {% if product %}
+    <h1>{{ product.name }}</h1>
+
+    <div class="product-panel">
+      <div class="product-price">₹{{ "%.2f"|format(product.price) }}</div>
+      <dl>
+        <dt>Category</dt><dd>{{ product.category }}</dd>
+        <dt>Stock</dt><dd>{{ product.stock_quantity }}</dd>
+        {% if product.attributes %}
+        <dt>Attributes</dt><dd>{{ product.attributes }}</dd>
+        {% endif %}
+      </dl>
+
+      <form method="post" action="{{ url_for('add_to_cart', product_id=product.product_id) }}" class="form inline">
+        <label>Qty <input type="number" name="quantity" value="1" min="1" style="width:4rem"></label>
+        <button type="submit">Add to Cart (US-8)</button>
+      </form>
+    </div>
+
+    <p class="muted">Viewing this page logs a product_view event; scrolling and time spent on
+      this page are logged automatically in the background (US-8).</p>
+
+    <p><a href="{{ url_for('search_page') }}">Back to search</a></p>
+  {% else %}
+    <h1>Product Not Found</h1>
+    <p><a href="{{ url_for('search_page') }}">Back to search</a></p>
+  {% endif %}
+
+  <script src="{{ url_for('static', filename='events.js') }}"
+          data-product-id="{{ product.product_id if product else '' }}"></script>
+{% endblock %}

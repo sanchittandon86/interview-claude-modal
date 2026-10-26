@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}E-Commerce Platform{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="{{ url_for('dashboard') }}" class="brand">Platform Dashboard</a>
+    <a href="{{ url_for('seller_home') }}">Seller: Add Product</a>
+    <a href="{{ url_for('seller_products') }}">Seller: Inventory</a>
+    <a href="{{ url_for('search_page') }}">Buyer: Search</a>
+    <a href="{{ url_for('recommendations_page') }}">Buyer: Recommendations</a>
+  </nav>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

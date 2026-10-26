@@ -1,0 +1,302 @@
+[
+  {
+    "seller_id": "SEL-1001",
+    "name": "TechNest Store 1",
+    "email": "seller1@example.com",
+    "joined_date": "2026-08-07"
+  },
+  {
+    "seller_id": "SEL-1002",
+    "name": "PureGlow Store 2",
+    "email": "seller2@example.com",
+    "joined_date": "2025-12-25"
+  },
+  {
+    "seller_id": "SEL-1003",
+    "name": "FitCore Store 3",
+    "email": "seller3@example.com",
+    "joined_date": "2026-04-12"
+  },
+  {
+    "seller_id": "SEL-1004",
+    "name": "TechNest Store 4",
+    "email": "seller4@example.com",
+    "joined_date": "2024-10-09"
+  },
+  {
+    "seller_id": "SEL-1005",
+    "name": "TechNest Store 5",
+    "email": "seller5@example.com",
+    "joined_date": "2025-01-05"
+  },
+  {
+    "seller_id": "SEL-1006",
+    "name": "StrideWear Store 6",
+    "email": "seller6@example.com",
+    "joined_date": "2026-07-31"
+  },
+  {
+    "seller_id": "SEL-1007",
+    "name": "Urban Threads Store 7",
+    "email": "seller7@example.com",
+    "joined_date": "2026-05-29"
+  },
+  {
+    "seller_id": "SEL-1008",
+    "name": "FitCore Store 8",
+    "email": "seller8@example.com",
+    "joined_date": "2026-01-06"
+  },
+  {
+    "seller_id": "SEL-1009",
+    "name": "Urban Threads Store 9",
+    "email": "seller9@example.com",
+    "joined_date": "2025-02-04"
+  },
+  {
+    "seller_id": "SEL-1010",
+    "name": "FitCore Store 10",
+    "email": "seller10@example.com",
+    "joined_date": "2024-08-29"
+  },
+  {
+    "seller_id": "SEL-1011",
+    "name": "StrideWear Store 11",
+    "email": "seller11@example.com",
+    "joined_date": "2026-01-19"
+  },
+  {
+    "seller_id": "SEL-1012",
+    "name": "NestHome Store 12",
+    "email": "seller12@example.com",
+    "joined_date": "2025-01-06"
+  },
+  {
+    "seller_id": "SEL-1013",
+    "name": "PureGlow Store 13",
+    "email": "seller13@example.com",
+    "joined_date": "2024-05-26"
+  },
+  {
+    "seller_id": "SEL-1014",
+    "name": "Urban Threads Store 14",
+    "email": "seller14@example.com",
+    "joined_date": "2024-07-16"
+  },
+  {
+    "seller_id": "SEL-1015",
+    "name": "HomeBliss Store 15",
+    "email": "seller15@example.com",
+    "joined_date": "2024-09-17"
+  },
+  {
+    "seller_id": "SEL-1016",
+    "name": "StrideWear Store 16",
+    "email": "seller16@example.com",
+    "joined_date": "2025-09-18"
+  },
+  {
+    "seller_id": "SEL-1017",
+    "name": "PureGlow Store 17",
+    "email": "seller17@example.com",
+    "joined_date": "2026-03-26"
+  },
+  {
+    "seller_id": "SEL-1018",
+    "name": "FitCore Store 18",
+    "email": "seller18@example.com",
+    "joined_date": "2024-07-12"
+  },
+  {
+    "seller_id": "SEL-1019",
+    "name": "PageTurner Store 19",
+    "email": "seller19@example.com",
+    "joined_date": "2026-05-20"
+  },
+  {
+    "seller_id": "SEL-1020",
+    "name": "TechNest Store 20",
+    "email": "seller20@example.com",
+    "joined_date": "2025-08-08"
+  },
+  {
+    "seller_id": "SEL-1021",
+    "name": "TechNest Store 21",
+    "email": "seller21@example.com",
+    "joined_date": "2025-08-30"
+  },
+  {
+    "seller_id": "SEL-1022",
+    "name": "PageTurner Store 22",
+    "email": "seller22@example.com",
+    "joined_date": "2024-12-22"
+  },
+  {
+    "seller_id": "SEL-1023",
+    "name": "PureGlow Store 23",
+    "email": "seller23@example.com",
+    "joined_date": "2024-05-28"
+  },
+  {
+    "seller_id": "SEL-1024",
+    "name": "Urban Threads Store 24",
+    "email": "seller24@example.com",
+    "joined_date": "2024-08-15"
+  },
+  {
+    "seller_id": "SEL-1025",
+    "name": "NestHome Store 25",
+    "email": "seller25@example.com",
+    "joined_date": "2025-03-01"
+  },
+  {
+    "seller_id": "SEL-1026",
+    "name": "TechNest Store 26",
+    "email": "seller26@example.com",
+    "joined_date": "2025-08-10"
+  },
+  {
+    "seller_id": "SEL-1027",
+    "name": "TechNest Store 27",
+    "email": "seller27@example.com",
+    "joined_date": "2025-02-13"
+  },
+  {
+    "seller_id": "SEL-1028",
+    "name": "PureGlow Store 28",
+    "email": "seller28@example.com",
+    "joined_date": "2024-05-05"
+  },
+  {
+    "seller_id": "SEL-1029",
+    "name": "PageTurner Store 29",
+    "email": "seller29@example.com",
+    "joined_date": "2025-01-18"
+  },
+  {
+    "seller_id": "SEL-1030",
+    "name": "FitCore Store 30",
+    "email": "seller30@example.com",
+    "joined_date": "2024-09-10"
+  },
+  {
+    "seller_id": "SEL-1031",
+    "name": "TechNest Store 31",
+    "email": "seller31@example.com",
+    "joined_date": "2026-07-17"
+  },
+  {
+    "seller_id": "SEL-1032",
+    "name": "FitCore Store 32",
+    "email": "seller32@example.com",
+    "joined_date": "2024-07-02"
+  },
+  {
+    "seller_id": "SEL-1033",
+    "name": "PureGlow Store 33",
+    "email": "seller33@example.com",
+    "joined_date": "2026-06-12"
+  },
+  {
+    "seller_id": "SEL-1034",
+    "name": "FitCore Store 34",
+    "email": "seller34@example.com",
+    "joined_date": "2026-05-21"
+  },
+  {
+    "seller_id": "SEL-1035",
+    "name": "StrideWear Store 35",
+    "email": "seller35@example.com",
+    "joined_date": "2025-11-21"
+  },
+  {
+    "seller_id": "SEL-1036",
+    "name": "NestHome Store 36",
+    "email": "seller36@example.com",
+    "joined_date": "2024-11-20"
+  },
+  {
+    "seller_id": "SEL-1037",
+    "name": "PageTurner Store 37",
+    "email": "seller37@example.com",
+    "joined_date": "2026-03-19"
+  },
+  {
+    "seller_id": "SEL-1038",
+    "name": "PageTurner Store 38",
+    "email": "seller38@example.com",
+    "joined_date": "2025-09-03"
+  },
+  {
+    "seller_id": "SEL-1039",
+    "name": "FitCore Store 39",
+    "email": "seller39@example.com",
+    "joined_date": "2024-10-15"
+  },
+  {
+    "seller_id": "SEL-1040",
+    "name": "PureGlow Store 40",
+    "email": "seller40@example.com",
+    "joined_date": "2024-09-13"
+  },
+  {
+    "seller_id": "SEL-1041",
+    "name": "TechNest Store 41",
+    "email": "seller41@example.com",
+    "joined_date": "2024-12-17"
+  },
+  {
+    "seller_id": "SEL-1042",
+    "name": "HomeBliss Store 42",
+    "email": "seller42@example.com",
+    "joined_date": "2025-03-04"
+  },
+  {
+    "seller_id": "SEL-1043",
+    "name": "FitCore Store 43",
+    "email": "seller43@example.com",
+    "joined_date": "2026-03-18"
+  },
+  {
+    "seller_id": "SEL-1044",
+    "name": "NestHome Store 44",
+    "email": "seller44@example.com",
+    "joined_date": "2025-08-09"
+  },
+  {
+    "seller_id": "SEL-1045",
+    "name": "PureGlow Store 45",
+    "email": "seller45@example.com",
+    "joined_date": "2024-11-15"
+  },
+  {
+    "seller_id": "SEL-1046",
+    "name": "FitCore Store 46",
+    "email": "seller46@example.com",
+    "joined_date": "2024-09-30"
+  },
+  {
+    "seller_id": "SEL-1047",
+    "name": "PageTurner Store 47",
+    "email": "seller47@example.com",
+    "joined_date": "2024-04-21"
+  },
+  {
+    "seller_id": "SEL-1048",
+    "name": "Urban Threads Store 48",
+    "email": "seller48@example.com",
+    "joined_date": "2026-01-10"
+  },
+  {
+    "seller_id": "SEL-1049",
+    "name": "Urban Threads Store 49",
+    "email": "seller49@example.com",
+    "joined_date": "2024-05-30"
+  },
+  {
+    "seller_id": "SEL-1050",
+    "name": "PageTurner Store 50",
+    "email": "seller50@example.com",
+    "joined_date": "2025-07-18"
+  }
+]

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <h1>Project Results Dashboard</h1>
+  <p class="muted">Metrics refresh automatically every 3 seconds.</p>
+
+  <div class="metric-grid" id="metric-grid">
+    <div class="metric-card">
+      <div class="metric-value" id="m-total_products">{{ metrics.total_products }}</div>
+      <div class="metric-label">Total Products</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value" id="m-total_sellers">{{ metrics.total_sellers }}</div>
+      <div class="metric-label">Total Sellers</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value" id="m-total_stock_units">{{ metrics.total_stock_units }}</div>
+      <div class="metric-label">Total Stock Units</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value" id="m-out_of_stock_products">{{ metrics.out_of_stock_products }}</div>
+      <div class="metric-label">Out-of-Stock Products</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value amount">₹<span id="m-total_inventory_value">{{ "{:,.2f}".format(metrics.total_inventory_value) }}</span></div>
+      <div class="metric-label">Total Inventory Value</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value" id="m-total_searches">{{ metrics.total_searches }}</div>
+      <div class="metric-label">Total Searches</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value" id="m-total_events">{{ metrics.total_events }}</div>
+      <div class="metric-label">Total Events Captured</div>
+    </div>
+  </div>
+
+  <h2>Events by Type</h2>
+  <table class="data-table" id="event-type-table">
+    <thead>
+      <tr><th>Event Type</th><th>Count</th></tr>
+    </thead>
+    <tbody>
+      {% for etype, count in metrics.event_counts.items() %}
+      <tr>
+        <td>{{ etype }}</td>
+        <td id="m-event-{{ etype }}">{{ count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    async function refreshMetrics() {
+      const res = await fetch("{{ url_for('api_metrics') }}");
+      const m = await res.json();
+      document.getElementById("m-total_products").textContent = m.total_products;
+      document.getElementById("m-total_sellers").textContent = m.total_sellers;
+      document.getElementById("m-total_stock_units").textContent = m.total_stock_units;
+      document.getElementById("m-out_of_stock_products").textContent = m.out_of_stock_products;
+      document.getElementById("m-total_inventory_value").textContent = m.total_inventory_value.toLocaleString(
+        "en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+      );
+      document.getElementById("m-total_searches").textContent = m.total_searches;
+      document.getElementById("m-total_events").textContent = m.total_events;
+      for (const [etype, count] of Object.entries(m.event_counts)) {
+        const cell = document.getElementById("m-event-" + etype);
+        if (cell) cell.textContent = count;
+      }
+    }
+    setInterval(refreshMetrics, 3000);
+  </script>
+{% endblock %}

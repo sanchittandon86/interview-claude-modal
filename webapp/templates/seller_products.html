@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Seller Inventory{% endblock %}
+{% block content %}
+  <h1>Seller Inventory</h1>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Product ID</th><th>Seller</th><th>Name</th><th>Category</th>
+        <th>Price</th><th>Stock</th><th>Attributes</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td>{{ p.product_id }}</td>
+        <td>{{ p.seller_id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.category }}</td>
+        <td>₹{{ "%.2f"|format(p.price) }}</td>
+        <td>{{ p.stock_quantity }}</td>
+        <td>{{ p.attributes }}</td>
+        <td><a href="{{ url_for('seller_edit_product', product_id=p.product_id) }}">Edit (US-2)</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="8">No products yet. <a href="{{ url_for('seller_home') }}">Add one</a>.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

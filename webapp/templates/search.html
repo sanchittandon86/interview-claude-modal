@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+  <h1>Search Products (US-3, US-4, US-5, US-6)</h1>
+
+  <form method="get" action="{{ url_for('search_page') }}" class="form inline">
+    <input type="text" name="q" value="{{ query_text }}" placeholder="Search products...">
+    {% for key, value in filters.items() %}
+      <input type="hidden" name="filter_{{ key }}" value="{{ value }}">
+    {% endfor %}
+    <button type="submit">Search</button>
+  </form>
+
+  {% if filters %}
+    <p>
+      Applied filters:
+      {% for key, value in filters.items() %}
+        <span class="tag">{{ key }}: {{ value }}</span>
+      {% endfor %}
+      — <a href="{{ url_for('search_page', q=query_text) }}">Clear filters (TC-4.4)</a>
+    </p>
+  {% endif %}
+
+  <div class="layout">
+    <aside class="facets">
+      <h3>Facets (US-6)</h3>
+      {% if facet_links %}
+        {% for facet_name, options in facet_links.items() %}
+          <div class="facet-group">
+            <strong>{{ facet_name }}</strong>
+            <ul>
+              {% for value, link in options %}
+                <li><a href="{{ link }}">{{ value }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="muted">No facets available for this result set (TC-6.3).</p>
+      {% endif %}
+    </aside>
+
+    <section class="results">
+      <h3>Results ({{ results|length }})</h3>
+      {% if results %}
+        <div class="product-grid">
+          {% for p in results %}
+            <div class="product-card">
+              <a class="product-name" href="{{ url_for('product_detail', product_id=p.product_id, query_id=query_id) }}">{{ p.name }}</a>
+              <div class="product-category">{{ p.category }}</div>
+              {% if p.attributes %}<div class="product-attrs">{{ p.attributes }}</div>{% endif %}
+              <div class="product-price">₹{{ "%.2f"|format(p.price) }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="muted">No matching products (TC-3.2 / TC-4.3).</p>
+      {% endif %}
+    </section>
+  </div>
+{% endblock %}

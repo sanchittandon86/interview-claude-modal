@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Recommendations{% endblock %}
+{% block content %}
+  <h1>Personalized Recommendations (US-7)</h1>
+
+  <form method="post" class="form inline">
+    <label>Buyer ID (optional) <input type="text" name="user_id" value="{{ user_id or '' }}" placeholder="e.g. USR-1001"></label>
+    <button type="submit">Set Buyer</button>
+  </form>
+
+  <p class="muted">Recommendations below are returned as-is from the recommendation/ML system
+    interface (a stub, since the real ML model is out of scope) and are not re-ranked by the
+    platform.</p>
+
+  {% if recommended_products %}
+    <div class="product-grid">
+      {% for p in recommended_products %}
+        <div class="product-card">
+          <a class="product-name" href="{{ url_for('product_detail', product_id=p.product_id) }}">{{ p.name }}</a>
+          <div class="product-category">{{ p.category }}</div>
+          <div class="product-price">₹{{ "%.2f"|format(p.price) }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No recommendations available right now (TC-7.3).</p>
+  {% endif %}
+{% endblock %}
