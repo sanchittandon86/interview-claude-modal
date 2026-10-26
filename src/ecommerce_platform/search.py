@@ -32,22 +32,35 @@ class SearchService:
         - Multiple filters are combined with AND semantics (TC-4.1, TC-4.2);
           removing a filter and re-calling search() naturally re-expands
           results (TC-4.4).
+        - The query is split into whitespace-separated tokens; a product
+          matches only if every token is found somewhere in its name,
+          category, or attribute values (e.g. "black sneakers" requires
+          both "black" and "sneakers" to each match, regardless of which
+          field each word is found in).
         Results are passed through _rank() before being returned (US-5).
         """
         filters = filters or {}
         candidates = self._catalog.all()
 
         normalized_query = (query_text or "").strip().lower()
-        if normalized_query:
+        query_tokens = normalized_query.split()
+        if query_tokens:
             candidates = [
                 p for p in candidates
-                if normalized_query in p.name.lower() or normalized_query in p.category.lower()
+                if all(self._token_matches(p, token) for token in query_tokens)
             ]
 
         for field_name, value in filters.items():
             candidates = [p for p in candidates if self._matches_filter(p, field_name, value)]
 
-        return self._rank(candidates, normalized_query)
+        return self._rank(candidates, query_tokens)
+
+    @staticmethod
+    def _token_matches(product: Product, token: str) -> bool:
+        """Check whether a single query word appears in a product's name, category, or attributes."""
+        if token in product.name.lower() or token in product.category.lower():
+            return True
+        return any(token in str(value).lower() for value in product.attributes.values())
 
     @staticmethod
     def _matches_filter(product: Product, field_name: str, value: Any) -> bool:
@@ -57,27 +70,33 @@ class SearchService:
         return product.attributes.get(field_name) == value
 
     @staticmethod
-    def _rank(products: List[Product], normalized_query: str) -> List[Product]:
+    def _rank(products: List[Product], query_tokens: List[str]) -> List[Product]:
         """
         US-5: Rank results by relevance.
 
-        Relevance score weighs an exact name match highest, then a partial
-        name match, then a category match. Ties are broken by product_id so
-        that identical queries over unchanged data always return the same
-        order (TC-5.2), and a single-match query ranks without error
-        (TC-5.3).
+        Each query token contributes its own score (name match weighted
+        highest, then category, then attribute values), summed across all
+        tokens so multi-word queries like "black sneakers" still rank
+        stronger matches first. Ties are broken by product_id so that
+        identical queries over unchanged data always return the same order
+        (TC-5.2), and a single-match query ranks without error (TC-5.3).
         """
 
         def score(p: Product) -> tuple:
             relevance = 0
-            if normalized_query:
+            if query_tokens:
                 name = p.name.lower()
-                if normalized_query == name:
-                    relevance = 3
-                elif normalized_query in name:
-                    relevance = 2
-                elif normalized_query in p.category.lower():
-                    relevance = 1
+                category = p.category.lower()
+                attr_values = [str(value).lower() for value in p.attributes.values()]
+                for token in query_tokens:
+                    if token == name:
+                        relevance += 3
+                    elif token in name:
+                        relevance += 2
+                    elif token in category:
+                        relevance += 1
+                    elif any(token in av for av in attr_values):
+                        relevance += 1
             return (-relevance, p.product_id)
 
         return sorted(products, key=score)
